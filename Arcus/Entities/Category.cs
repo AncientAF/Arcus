@@ -1,10 +1,10 @@
 ﻿namespace Arcus.Models
 {
-    public class Tag
+    public class Category
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Meta { get; set; }
-        public string Content { get; set; }
+        public string? Meta { get; set; }
+        public string? Context { get; set; }
     }
 }
