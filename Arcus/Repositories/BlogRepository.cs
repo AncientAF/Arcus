@@ -2,6 +2,7 @@
 using Arcus.Models;
 using Arcus.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Arcus.Repositories
 {
@@ -12,6 +13,7 @@ namespace Arcus.Repositories
         {
             this._arcusDbContext = arcusDbContext;
         }
+        #region Get методы
         public async Task<IEnumerable<Category>> GetCategories()
         {
             var categories = await this._arcusDbContext.Categories.ToListAsync();
@@ -54,11 +56,106 @@ namespace Arcus.Repositories
             return tags;
         }
 
-        public async Task<IEnumerable<PostComment>> PostComments(int id)
+
+        public async Task<IEnumerable<PostComment>> GetPostComments(int id)
         {
             var comments = await this._arcusDbContext.PostComments.Where(c => c.PostId == id).ToListAsync();
 
             return comments;
         }
+
+        public async Task<IEnumerable<Tag>> GetTags()
+        {
+            var tags = await this._arcusDbContext.Tags.ToListAsync();
+
+            return tags;
+        }
+        #endregion
+        #region Add методы
+        public async Task<int> Add<T>(T newObj)
+        {
+            try
+            {
+                await this._arcusDbContext.AddAsync(newObj);
+                return await this._arcusDbContext.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw (new DataException());
+            }
+        }
+
+        //public async Task<int> AddTag(Tag newTag)
+        //{
+        //    try
+        //    {
+        //        await this._arcusDbContext.AddAsync(newTag);
+        //        return await this._arcusDbContext.SaveChangesAsync();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw (new DataException());
+        //    }
+        //}
+
+        //public async Task<int> AddCategory(Category newCategory)
+        //{
+        //    try
+        //    {
+        //        await this._arcusDbContext.AddAsync(newCategory);
+        //        return await this._arcusDbContext.SaveChangesAsync();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw (new DataException());
+        //    }
+        //}
+
+        //public async Task<int> AddComment(PostComment newPostComments)
+        //{
+        //    try
+        //    {
+        //        await this._arcusDbContext.AddAsync(newPostComments);
+        //        return await this._arcusDbContext.SaveChangesAsync();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw (new DataException());
+        //    }
+        //}
+
+        //public async Task<int> AddTagToPost(PostTag newPostTag)
+        //{
+        //    try
+        //    {
+        //        await this._arcusDbContext.AddAsync(newPostTag);
+        //        return await this._arcusDbContext.SaveChangesAsync();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw (new DataException());
+        //    }
+        //}
+
+        //public async Task<int> AddCategoryToPost(PostCategory newPostCategory)
+        //{
+        //    try
+        //    {
+        //        await this._arcusDbContext.AddAsync(newTag);
+        //        return await this._arcusDbContext.SaveChangesAsync();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw (new DataException());
+        //    }
+        //}
+
+        #endregion
     }
 }

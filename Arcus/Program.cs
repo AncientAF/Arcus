@@ -10,9 +10,22 @@ namespace Arcus
     {
         public static void Main(string[] args)
         {
+            //var ArcusFrontend = "_arcusFrontend";
+
             var builder = WebApplication.CreateBuilder(args);
 
+
             // Add services to the container.
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                                      policy =>
+                                      {
+                                          policy.WithOrigins("http://localhost:3000")
+                                                              .AllowAnyHeader()
+                                                              .AllowAnyMethod();
+                                      });
+            });
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -24,6 +37,8 @@ namespace Arcus
             builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 
             var app = builder.Build();
+
+            app.UseCors();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

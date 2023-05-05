@@ -3,6 +3,7 @@ using System;
 using Arcus.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Arcus.Migrations
 {
     [DbContext(typeof(ArcusDbContext))]
-    partial class ArcusDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230502195627_key")]
+    partial class key
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +45,7 @@ namespace Arcus.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Arcus.Models.Post", b =>
@@ -83,7 +86,7 @@ namespace Arcus.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Posts", (string)null);
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("Arcus.Models.PostCategory", b =>
@@ -106,7 +109,7 @@ namespace Arcus.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("PostCategories", (string)null);
+                    b.ToTable("PostCategories");
                 });
 
             modelBuilder.Entity("Arcus.Models.PostComment", b =>
@@ -141,7 +144,7 @@ namespace Arcus.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("PostComments", (string)null);
+                    b.ToTable("PostComments");
                 });
 
             modelBuilder.Entity("Arcus.Models.PostTag", b =>
@@ -164,7 +167,7 @@ namespace Arcus.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("PostTags", (string)null);
+                    b.ToTable("PostTags");
                 });
 
             modelBuilder.Entity("Arcus.Models.Tag", b =>
@@ -187,7 +190,7 @@ namespace Arcus.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags", (string)null);
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Arcus.Models.User", b =>
@@ -221,7 +224,7 @@ namespace Arcus.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Arcus.Models.Post", b =>
