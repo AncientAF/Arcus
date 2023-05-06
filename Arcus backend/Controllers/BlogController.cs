@@ -12,7 +12,7 @@ namespace Arcus.Controllers
         private readonly IBlogRepository blogRepository;
         public BlogController(IBlogRepository blogRepository)
         {
-           this.blogRepository = blogRepository;
+            this.blogRepository = blogRepository;
         }
 
         #region Старый методы с boilerplate
@@ -241,17 +241,18 @@ namespace Arcus.Controllers
         {
             return await GetResponseFromRepo<IEnumerable<Tag>>(await this.blogRepository.GetTags());
         }
-        
+
         #endregion
         #region Post методы
         [HttpPost]
         public async Task<ActionResult<int>> AddPost(string title, Boolean isPublished, string Context)
         {
-            var newPost = new Post() {
+            var newPost = new Post()
+            {
                 Title = title,
                 IsPublished = isPublished,
                 Context = Context
-                };
+            };
             return CreatedAtAction(nameof(AddPost), await GetResponseFromRepo<int>(await this.blogRepository.Add<Post>(newPost)));
         }
         [HttpPost]
