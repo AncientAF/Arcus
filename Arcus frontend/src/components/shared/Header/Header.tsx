@@ -17,7 +17,7 @@ const pages = [
   {
     id: 0,
     label: "Блог",
-    route: "Blog",
+    route: "",
   },
   {
     id: 1,

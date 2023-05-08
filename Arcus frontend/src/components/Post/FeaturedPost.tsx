@@ -3,21 +3,20 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import { useNavigate } from "react-router-dom";
-import { isExternalModuleNameRelative } from "typescript";
+import { Button, CardActionArea } from '@mui/material';
+
   
   //function Post(props: {postInfo:PostProps}) {
-  function Post(props: {postInfo: PostProps}) {
+  function FeaturedPost(props: {postInfo: PostProps}) {
 
-    const navigate = useNavigate();
+    
   
     return (
-      <Card sx={{ maxWidth: 300, width: "80%" }} onClick={() => navigate("Post/" + props.postInfo.id)}>
+      <Card sx={{ maxWidth: 900, width: "80%" }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="300"
           image="https://images2.minutemediacdn.com/image/upload/c_crop,w_2115,h_1189,x_0,y_217/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01gwscsvw2yrt73s9sqj.jpg"
           alt=""
         />
@@ -48,5 +47,5 @@ import { isExternalModuleNameRelative } from "typescript";
     );
   }
   
-  export default Post;
+  export default FeaturedPost;
   

@@ -1,4 +1,4 @@
-﻿using Arcus.Models;
+﻿using Arcus.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Arcus.Data

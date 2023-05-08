@@ -1,6 +1,8 @@
 ﻿using Arcus.Data;
-using Arcus.Models;
+using Arcus.Entities;
 using Arcus.Repositories.Interfaces;
+using Arcus_backend.Entities.DTOs;
+using Arcus_backend.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
@@ -34,12 +36,30 @@ namespace Arcus.Repositories
 
             return post;
         }
+        public async Task<PostWithTags> GetPostWithTags(int id)
+        {
+            var post = await this._arcusDbContext.Posts.SingleOrDefaultAsync(p => p.Id == id);
+            var tags = await GetPostTags(id);
+
+            return post.ConvertToPostWithTags(tags);
+        }
 
         public async Task<IEnumerable<Post>> GetPosts()
         {
             var posts = await this._arcusDbContext.Posts.ToListAsync();
 
             return posts;
+        }
+        public async Task<IEnumerable<PostWithTags>> GetPostsWithTags()
+        {
+            var posts = await this._arcusDbContext.Posts.ToListAsync();
+            List<PostWithTags> postsWithTags = new List<PostWithTags>();
+            foreach (var post in posts)
+            {
+                postsWithTags.Add(post.ConvertToPostWithTags(await GetPostTags(post.Id)));
+            }
+
+            return postsWithTags;
         }
 
         public async Task<IEnumerable<Post>> GetPostsByCategory(int id)

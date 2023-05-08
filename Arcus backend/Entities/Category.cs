@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Arcus.Models
+namespace Arcus.Entities
 {
     public class Category
     {

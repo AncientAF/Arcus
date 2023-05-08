@@ -6,39 +6,41 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import Header from "./components/shared/Header/Header";
-import Blog from "./pages/blog/Blog";
-import Wave from 'react-wavify'
+import Footer from "./components/shared/Footer/Footer";
+import Wave from "react-wavify";
 import { Outlet } from "react-router-dom";
+import { relative } from "path";
 
-function App({children}: any) {
+function App({ children }: any) {
   return (
     <div className="App">
       <Header></Header>
-      <div style={{rotate: "180deg", marginTop: "-5px"}}>
-      <Wave fill='#1976d2'
-        paused={false}
-        options={{
-          height: 20,
-          amplitude: 20,
-          speed: 0.15,
-          points: 3
-        }}
-  />
+      <div style={{ rotate: "180deg", marginTop: "-5px" }}>
+        <Wave
+          fill="#1976d2"
+          paused={false}
+          options={{
+            height: 15,
+            amplitude: 20,
+            speed: 0.15,
+            points: 3,
+          }}
+        />
       </div>
-      <div >
-        <Outlet/>
-        {/* <Blog></Blog> */}
+      <Outlet />
+      <div style={{ marginBottom: "-5px" }}>
+        <Wave
+          fill="#1976d2"
+          paused={false}
+          options={{
+            height: 15,
+            amplitude: 20,
+            speed: 0.15,
+            points: 3,
+          }}
+        />
       </div>
-      <Wave fill='#1976d2'
-        paused={false}
-        options={{
-          height: 20,
-          amplitude: 20,
-          speed: 0.15,
-          points: 3
-        }}
-        style={{marginBottom: "-5px"}}
-  />
+      <Footer></Footer>
     </div>
   );
 }

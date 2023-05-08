@@ -1,10 +1,13 @@
-﻿using Arcus.Models;
+﻿using Arcus.Entities;
+using Arcus_backend.Entities.DTOs;
 
 namespace Arcus.Repositories.Interfaces
 {
     public interface IBlogRepository
     {
         Task<IEnumerable<Post>> GetPosts();
+        Task<IEnumerable<PostWithTags>> GetPostsWithTags();
+        Task<PostWithTags> GetPostWithTags(int id);
         Task<IEnumerable<Category>> GetCategories();
         Task<Post> GetPost(int id);
         Task<IEnumerable<Category>> GetPostCategory(int id);

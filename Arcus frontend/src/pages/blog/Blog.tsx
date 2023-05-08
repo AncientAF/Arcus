@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Post from "../../components/Post/Post";
 import PostProps from "../../components/Post/PostProps";
+import FeaturedPost from "../../components/Post/FeaturedPost";
 import { useEffect, useState } from "react";
 
 
@@ -8,7 +9,7 @@ function Blog() {
   const baseUrl = "https://localhost:44362/api/Blog/";
   const [posts, setPosts] = useState<PostProps[]>([]);
   const GetPosts = async () => {
-    const data = await fetch(baseUrl + "GetPosts", {
+    const data = await fetch(baseUrl + "GetPostsWithTags", {
       method: "GET",
     });
     const jsonData = await data.json();
@@ -24,20 +25,20 @@ function Blog() {
         container
         justifyContent="flex-start"
         alignItems="center"
-        spacing={{ xs: 2, md: 3 }}
+        spacing={{ xs: 2, md: 1 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{marginTop: "20px"}}
+        sx={{paddingY: "20px"}}
       >
         {posts.map((post: PostProps) => {
-            if(post.id == 1)
+            if(post.id === 1)
             {
                 return( //Сделать класс featured post чтобы какой-то пост показывался больше чем остальные
-                    <Grid item xs={2} sm={4} md={4} key={post.id} sx={{
+                    <Grid item xs={2} sm={4} md={12} key={post.id} sx={{
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
                     }}>
-                      <Post postInfo={post}></Post>
+                      <FeaturedPost postInfo={post}></FeaturedPost>
                     </Grid>
                 );
             }

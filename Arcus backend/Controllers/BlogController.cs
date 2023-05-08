@@ -1,5 +1,6 @@
-﻿using Arcus.Models;
+﻿using Arcus.Entities;
 using Arcus.Repositories.Interfaces;
+using Arcus_backend.Entities.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 
@@ -206,10 +207,20 @@ namespace Arcus.Controllers
         {
             return await GetResponseFromRepo<IEnumerable<Post>>(await this.blogRepository.GetPosts());
         }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<PostWithTags>>> GetPostsWithTags()
+        {
+            return await GetResponseFromRepo<IEnumerable<PostWithTags>>(await this.blogRepository.GetPostsWithTags());
+        }
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Post>> GetPost(int id)
         {
             return await GetResponseFromRepo<Post>(await this.blogRepository.GetPost(id));
+        }
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<PostWithTags>> GetPostWithTags(int id)
+        {
+            return await GetResponseFromRepo<PostWithTags>(await this.blogRepository.GetPostWithTags(id));
         }
         [HttpGet("{id:int}")]
         public async Task<ActionResult<IEnumerable<Category>>> GetPostCategory(int id)
