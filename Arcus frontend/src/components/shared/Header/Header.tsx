@@ -59,7 +59,7 @@ function Header() {
               fontFamily: "Roboto",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "text.primary",
               textDecoration: "none",
             }}
           >
@@ -123,7 +123,7 @@ function Header() {
               fontFamily: "Roboto",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "text.primary",
               textDecoration: "none",
             }}
           >
@@ -140,12 +140,12 @@ function Header() {
                 sx={{
                   my: 3,
                   mr: 5,
-                  color: "white",
+                  color: "text.primary",
                   display: "block",
                   fontSize: 16,
                   "&:hover": {
-                    backgroundColor: "white",
-                    color: "black",
+                    backgroundColor: "black",
+                    color: "text.secondary",
                   },
                 }}
               >

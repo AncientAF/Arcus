@@ -1,5 +1,3 @@
-import React from "react";
-import logo from "./assets/svg/logo.svg";
 import "./assets/css/App.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -7,39 +5,47 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import Header from "./components/shared/Header/Header";
 import Footer from "./components/shared/Footer/Footer";
-import Wave from "react-wavify";
 import { Outlet } from "react-router-dom";
-import { relative } from "path";
+import { Box, Container } from "@mui/material";
+import mainWave1 from "./assets/svg/mainWave1.svg";
+import mainWave2 from "./assets/svg/mainWave2.svg";
 
 function App({ children }: any) {
   return (
     <div className="App">
       <Header></Header>
-      <div style={{ rotate: "180deg", marginTop: "-5px" }}>
-        <Wave
-          fill="#1976d2"
-          paused={false}
-          options={{
-            height: 15,
-            amplitude: 20,
-            speed: 0.15,
-            points: 3,
+      <Box
+          style={{
+            aspectRatio: "960/150",
+            width: "100%",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundImage: `url(${mainWave1})`,
+            pointerEvents: "none",
+            // position: "absolute",
+            // zIndex: "0",
+            // top: "50px",
           }}
-        />
-      </div>
-      <Outlet />
-      <div style={{ marginBottom: "-5px" }}>
-        <Wave
-          fill="#1976d2"
-          paused={false}
-          options={{
-            height: 15,
-            amplitude: 20,
-            speed: 0.15,
-            points: 3,
+        ></Box>
+      <Box sx={{ backgroundColor: "background.default", paddingX: "10vw"}}>
+        
+        <Outlet />
+      </Box>
+      <Box
+          style={{
+            aspectRatio: "960/150",
+            width: "100%",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundImage: `url(${mainWave2})`,
+            pointerEvents: "none",
+            // position: "absolute",
+            // zIndex: "0",
+            // top: "50px",
           }}
-        />
-      </div>
+        ></Box>
       <Footer></Footer>
     </div>
   );

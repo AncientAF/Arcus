@@ -27,9 +27,11 @@ export default function PostPage() {
     flexDirection: "column",
     width: "80%"
   }}>
-    <Typography variant="h3" sx={{
+    <Typography variant="h2" sx={{
         display: "inline-flex",
         alignItems: "flex-start",
+        color: "text.secondary",
+        fontWeight: "300"
     }}>{post?.title}</Typography>
     <Typography variant="body1">{post?.context}</Typography>
   </Box>;

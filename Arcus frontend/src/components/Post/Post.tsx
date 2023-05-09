@@ -20,8 +20,11 @@ import { isExternalModuleNameRelative } from "typescript";
           height="140"
           image="https://images2.minutemediacdn.com/image/upload/c_crop,w_2115,h_1189,x_0,y_217/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01gwscsvw2yrt73s9sqj.jpg"
           alt=""
+          sx={{pointerEvents: "none",}}
         />
-        <CardContent>
+        <CardContent sx={{
+          backgroundColor: "secondary.main"
+        }}>
           {props.postInfo.tags?.map(tag => {
             return(
               <Typography  key={tag.id} sx={{
@@ -39,7 +42,7 @@ import { isExternalModuleNameRelative } from "typescript";
             );
           })}
           {/* Добавить сюда отображение тегов поста */}
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography color="text.primary" gutterBottom variant="h5" component="div">
             {props.postInfo.title}
           </Typography>
         </CardContent>

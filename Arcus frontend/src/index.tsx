@@ -1,15 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './assets/css/index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Blog from './pages/blog/Blog';
-import PostPage from './pages/blog/PostPage/PostPage';
-
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./assets/css/index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Blog from "./pages/blog/Blog";
+import PostPage from "./pages/blog/PostPage/PostPage";
+import { ThemeProvider } from "@mui/material";
+import { Theme } from "./theme";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,7 +20,6 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Blog />,
-
       },
       {
         path: "Post/:id",
@@ -33,11 +30,13 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={Theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
