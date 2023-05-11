@@ -12,26 +12,8 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
-
-const pages = [
-  {
-    id: 0,
-    label: "Блог",
-    route: "",
-  },
-  {
-    id: 1,
-    label: "Примеры",
-    route: "Examples",
-  },
-  {
-    id: 2,
-    label: "Цены",
-    route: "Prices",
-  },
-];
-//const pages = ["Блог", "Примеры", "Цены"];
-const name: string = "Arcus";
+import { pages, name } from "../consts";
+import * as styles from "./styles";
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -47,21 +29,14 @@ function Header() {
     <AppBar position="static">
       <Container>
         <Toolbar>
+          {/* Большое меню */}
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="/"
-            sx={{
-              mr: 5,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "Roboto",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "text.primary",
-              textDecoration: "none",
-            }}
+            sx={styles.mdName}
           >
             {name}
           </Typography>
@@ -116,16 +91,7 @@ function Header() {
             noWrap
             component="a"
             href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "Roboto",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "text.primary",
-              textDecoration: "none",
-            }}
+            sx={styles.xsName}
           >
             {name}
           </Typography>
@@ -137,17 +103,7 @@ function Header() {
                   navigate(page.route);
                   handleCloseNavMenu();
                 }}
-                sx={{
-                  my: 3,
-                  mr: 5,
-                  color: "text.primary",
-                  display: "block",
-                  fontSize: 16,
-                  "&:hover": {
-                    backgroundColor: "black",
-                    color: "text.secondary",
-                  },
-                }}
+                sx={styles.mdNavButtons}
               >
                 {page.label}
               </Button>

@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PostProps from "../../../components/Post/PostProps";
@@ -21,18 +20,46 @@ export default function PostPage() {
   useEffect(() => {
     GetPosts();
   }, []);
-  return <Box sx={{
-    display: "inline-flex",
-    alignItems: "flex-start",
-    flexDirection: "column",
-    width: "80%"
-  }}>
-    <Typography variant="h2" sx={{
+  return (
+    <Box
+      sx={{
         display: "inline-flex",
         alignItems: "flex-start",
+        flexDirection: "column",
+        width: "90%",
+      }}
+    >
+      <Typography
+        variant="h2"
+        sx={{
+          display: "inline-flex",
+          alignItems: "flex-start",
+          color: "text.primary",
+          fontWeight: "500",
+        }}
+      >
+        {post?.title}
+      </Typography>
+      <Box sx={{
         color: "text.secondary",
-        fontWeight: "300"
-    }}>{post?.title}</Typography>
-    <Typography variant="body1">{post?.context}</Typography>
-  </Box>;
+        width: "90%",
+        minHeight: "500px",
+        padding: "10px",
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        borderRadius: "5%",
+        marginTop: "20px"
+      }}>
+      <Typography
+        sx={{
+          color: "text.secondary",
+          textAlign: "start",
+          marginX: "40px",
+        }}
+        variant="body1"
+      >
+        {post?.context}
+      </Typography>
+      </Box>
+    </Box>
+  );
 }

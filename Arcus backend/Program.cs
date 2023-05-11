@@ -3,6 +3,7 @@ using Arcus.Data;
 using Arcus.Repositories;
 using Arcus.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 namespace Arcus
 {
@@ -37,6 +38,14 @@ namespace Arcus
             builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 
             var app = builder.Build();
+
+            app.UseFileServer(new FileServerOptions
+            {
+                EnableDirectoryBrowsing = true,
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Data\Assets")),
+                RequestPath = new PathString("/files"),
+                EnableDefaultFiles = false
+            });
 
             app.UseCors();
 

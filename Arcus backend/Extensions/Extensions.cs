@@ -18,7 +18,8 @@ namespace Arcus_backend.Extensions
                 Id = post.Id,
                 IsPublished = post.IsPublished,
                 MetaTitle = post.MetaTitle,
-                Tags = tags
+                Tags = tags,
+                ImagePath = post.ImagePath,
             };
             
         }

@@ -14,7 +14,7 @@ namespace Arcus.Entities
         public DateTime? DateCreated { get; set; }
         public bool IsPublished { get; set; }
         public string Context { get; set; }
-
+        public string? ImagePath { get; set; }
 
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Arcus.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Arcus.Migrations
 {
     [DbContext(typeof(ArcusDbContext))]
-    partial class ArcusDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230509160331_added_ImagePath_To_Post")]
+    partial class added_ImagePath_To_Post
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

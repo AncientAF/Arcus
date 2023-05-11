@@ -1,55 +1,80 @@
 import PostProps from "./PostProps";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { isExternalModuleNameRelative } from "typescript";
-  
-  //function Post(props: {postInfo:PostProps}) {
-  function Post(props: {postInfo: PostProps}) {
+import { Link } from "@mui/material";
+import * as styles from "./styles";
+const baseUrl = "https://localhost:44362/files/";
 
-    const navigate = useNavigate();
-  
-    return (
-      <Card sx={{ maxWidth: 300, width: "80%" }} onClick={() => navigate("Post/" + props.postInfo.id)}>
-      <CardActionArea>
+//function Post(props: {postInfo:PostProps}) {
+function Post(props: { postInfo: PostProps }) {
+  const navigate = useNavigate();
+
+  return (
+    <Card sx={styles.cardStyle}>
+      <Box sx={{ overflow: "hidden" }}>
         <CardMedia
           component="img"
-          height="140"
-          image="https://images2.minutemediacdn.com/image/upload/c_crop,w_2115,h_1189,x_0,y_217/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01gwscsvw2yrt73s9sqj.jpg"
+          height="150"
+          width="100"
+          image={
+            props.postInfo.imagePath
+              ? baseUrl + props.postInfo.imagePath
+              : "https://images2.minutemediacdn.com/image/upload/c_crop,w_2115,h_1189,x_0,y_217/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01gwscsvw2yrt73s9sqj.jpg"
+          }
           alt=""
-          sx={{pointerEvents: "none",}}
+          sx={styles.cardMediaStyle}
+          onClick={() => navigate("Post/" + props.postInfo.id)}
         />
-        <CardContent sx={{
-          backgroundColor: "secondary.main"
-        }}>
-          {props.postInfo.tags?.map(tag => {
-            return(
-              <Typography  key={tag.id} sx={{
-                fontWeight: "700",
-                display: "inline-flex",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
-                marginRight: "5px",
-                border: "2px solid black",
-                padding: "2px",
-                borderRadius: "20%",
-                color: "white",
-                backgroundColor: "black"
-              }}>{tag.title}</Typography>
+      </Box>
+
+      <CardContent sx={styles.cardContentStyle}>
+        <Box
+          sx={{ display: "flex", flexDirection: "row", marginBottm: "10px" }}
+        >
+          {props.postInfo.tags?.map((tag) => {
+            return (
+              <Typography
+                fontSize="14px"
+                key={tag.id}
+                sx={styles.postTypographyStyle}
+              >
+                {tag.title}
+              </Typography>
             );
           })}
-          {/* Добавить сюда отображение тегов поста */}
-          <Typography color="text.primary" gutterBottom variant="h5" component="div">
-            {props.postInfo.title}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+        </Box>
+
+        <Link
+          color="text.primary"
+          variant="h5"
+          fontWeight={500}
+          component="div"
+          underline="hover"
+          onClick={() => navigate("Post/" + props.postInfo.id)}
+          sx={{ cursor: "pointer", textAlign: "start" }}
+        >
+          {props.postInfo.title}
+        </Link>
+        <Typography textAlign={"left"}>
+          {props.postInfo.context.substring(0, 30)}...
+        </Typography>
+        <Typography textAlign={"left"}>
+          By 
+          <Link
+            onClick={() => navigate("Post/" + props.postInfo.id)}
+            underline="hover"
+            fontWeight={500}
+          >
+            {props.postInfo.author}
+          </Link>
+        </Typography>
+      </CardContent>
     </Card>
-    );
-  }
-  
-  export default Post;
-  
+  );
+}
+
+export default Post;

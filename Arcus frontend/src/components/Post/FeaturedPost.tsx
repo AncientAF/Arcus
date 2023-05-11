@@ -4,8 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea } from '@mui/material';
+import * as styles from "./styles"
 
-  
   //function Post(props: {postInfo:PostProps}) {
   function FeaturedPost(props: {postInfo: PostProps}) {
 
@@ -24,18 +24,7 @@ import { Button, CardActionArea } from '@mui/material';
         <CardContent sx={{backgroundColor: "secondary.main"}}>
           {props.postInfo.tags?.map(tag => {
             return(
-              <Typography  key={tag.id} sx={{
-                fontWeight: "700",
-                display: "inline-flex",
-                justifyContent: "flex-start",
-                alignItems: "flex-start",
-                marginRight: "5px",
-                border: "2px solid black",
-                padding: "2px",
-                borderRadius: "20%",
-                color: "white",
-                backgroundColor: "black"
-              }}>{tag.title}</Typography>
+              <Typography  key={tag.id} sx={styles.featuredPostTypography}>{tag.title}</Typography>
             );
           })}
           {/* Добавить сюда отображение тегов поста */}

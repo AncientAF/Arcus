@@ -256,13 +256,14 @@ namespace Arcus.Controllers
         #endregion
         #region Post методы
         [HttpPost]
-        public async Task<ActionResult<int>> AddPost(string title, Boolean isPublished, string Context)
+        public async Task<ActionResult<int>> AddPost(string title, Boolean isPublished, string context, string imagePath)
         {
             var newPost = new Post()
             {
                 Title = title,
                 IsPublished = isPublished,
-                Context = Context
+                Context = context,
+                ImagePath = imagePath
             };
             return CreatedAtAction(nameof(AddPost), await GetResponseFromRepo<int>(await this.blogRepository.Add<Post>(newPost)));
         }

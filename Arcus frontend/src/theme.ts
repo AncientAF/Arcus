@@ -14,17 +14,17 @@ export const Theme = createTheme({
         //     primary: "#fff"
         // }
         primary: {
-            main: "#C8FFD4",
+            main: "#7a2ffb", //Цвет footer и header
         },
         secondary: {
-            main: "#B1AFFF"
+            main: "#7a2ffb" //Цвет постов
         },
         text: {
-            primary: "#000",
-            secondary: "#B8E8FC" 
+            primary: "#fff", //Цвет текста
+            secondary: "#000" //Цвет текста когда наводишься
         },
         background: {
-            default: "#FDFDBD"
+            default: "#ffaa64" //Основной цвет фона
         }
     }
 });

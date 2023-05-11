@@ -28,7 +28,7 @@ function App({ children }: any) {
             // top: "50px",
           }}
         ></Box>
-      <Box sx={{ backgroundColor: "background.default", paddingX: "10vw"}}>
+      <Box sx={{ backgroundColor: "background.default", background: "linear-gradient(180deg, rgba(143,12,216,1) 0%, rgba(255,170,100,1) 100%)", paddingX: "10vw"}}>
         
         <Outlet />
       </Box>
