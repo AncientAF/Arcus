@@ -33,3 +33,5 @@ export const boxForButtons = {
   flexDirection: "column",
   alignItems: "center",
 };
+
+export {}

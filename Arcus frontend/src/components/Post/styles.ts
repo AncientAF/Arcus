@@ -57,3 +57,5 @@ export const featuredPostTypography = {
       color: "text.secondary",
     },
   };
+
+  export {}
